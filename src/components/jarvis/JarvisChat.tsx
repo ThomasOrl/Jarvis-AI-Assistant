@@ -1,5 +1,5 @@
 /**
- * Zone de conversation avec Jarvis.
+ * Zone de conversation de Jarvis.
  *
  * Trois canaux se rejoignent ici :
  * - le texte    : écrit au clavier et envoyé à `/api/chat` (réponse en flux) ;
