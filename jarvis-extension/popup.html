@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>J.A.R.V.I.S.</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="bar">
+      <span class="dot" aria-hidden="true"></span>
+      <span class="brand">Jarvis</span>
+      <button id="voice" class="icon" type="button" title="Voix de Jarvis">Voix</button>
+      <button id="clear" class="icon" type="button" title="Effacer la conversation">Effacer</button>
+    </header>
+
+    <div id="log" class="log" aria-live="polite">
+      <p class="hello">Bonjour Monsieur. Que faisons nous aujourd'hui ?</p>
+    </div>
+
+    <p id="error" class="error" hidden></p>
+
+    <form id="form" class="composer">
+      <textarea
+        id="input"
+        rows="1"
+        placeholder="Posez votre question…"
+        autocomplete="off"
+      ></textarea>
+      <button id="send" type="submit" title="Envoyer">›</button>
+    </form>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

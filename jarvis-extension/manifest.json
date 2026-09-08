@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "J.A.R.V.I.S.",
+  "version": "1.0.0",
+  "description": "Votre assistant Jarvis, accessible depuis la barre d'outils de Chrome.",
+  "permissions": ["storage"],
+  "host_permissions": ["https://jarvis-is-your-ai.netlify.app/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+  "icons": {
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}
