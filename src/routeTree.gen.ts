@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 import { Route as ApiSpeechRouteImport } from './routes/api/speech'
 import { Route as ApiTranscribeRouteImport } from './routes/api/transcribe'
+import { Route as ApiPublicExtChatRouteImport } from './routes/api/public/ext-chat'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,18 +35,25 @@ const ApiTranscribeRoute = ApiTranscribeRouteImport.update({
   path: '/api/transcribe',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicExtChatRoute = ApiPublicExtChatRouteImport.update({
+  id: '/api/public/ext-chat',
+  path: '/api/public/ext-chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/api/chat': typeof ApiChatRoute
   '/api/speech': typeof ApiSpeechRoute
   '/api/transcribe': typeof ApiTranscribeRoute
+  '/api/public/ext-chat': typeof ApiPublicExtChatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/api/chat': typeof ApiChatRoute
   '/api/speech': typeof ApiSpeechRoute
   '/api/transcribe': typeof ApiTranscribeRoute
+  '/api/public/ext-chat': typeof ApiPublicExtChatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,30 @@ export interface FileRoutesById {
   '/api/chat': typeof ApiChatRoute
   '/api/speech': typeof ApiSpeechRoute
   '/api/transcribe': typeof ApiTranscribeRoute
+  '/api/public/ext-chat': typeof ApiPublicExtChatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/chat' | '/api/speech' | '/api/transcribe'
+  fullPaths:
+    | '/'
+    | '/api/chat'
+    | '/api/speech'
+    | '/api/transcribe'
+    | '/api/public/ext-chat'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/chat' | '/api/speech' | '/api/transcribe'
-  id: '__root__' | '/' | '/api/chat' | '/api/speech' | '/api/transcribe'
+  to:
+    | '/'
+    | '/api/chat'
+    | '/api/speech'
+    | '/api/transcribe'
+    | '/api/public/ext-chat'
+  id:
+    | '__root__'
+    | '/'
+    | '/api/chat'
+    | '/api/speech'
+    | '/api/transcribe'
+    | '/api/public/ext-chat'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +92,7 @@ export interface RootRouteChildren {
   ApiChatRoute: typeof ApiChatRoute
   ApiSpeechRoute: typeof ApiSpeechRoute
   ApiTranscribeRoute: typeof ApiTranscribeRoute
+  ApiPublicExtChatRoute: typeof ApiPublicExtChatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +125,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiTranscribeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/ext-chat': {
+      id: '/api/public/ext-chat'
+      path: '/api/public/ext-chat'
+      fullPath: '/api/public/ext-chat'
+      preLoaderRoute: typeof ApiPublicExtChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +140,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiChatRoute: ApiChatRoute,
   ApiSpeechRoute: ApiSpeechRoute,
   ApiTranscribeRoute: ApiTranscribeRoute,
+  ApiPublicExtChatRoute: ApiPublicExtChatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
